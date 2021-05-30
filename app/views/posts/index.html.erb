@@ -1,0 +1,21 @@
+<table border=1>
+	<tr>
+	  <th>Post_Title</th>
+	  <th>Post_Body</th>
+	   <th>User_Id</th>
+	    <th>Post_Id</th>
+	    <th>Likes</th>
+	    <th>ShowPost</th>
+    </tr>
+    <%@posts.each do |var|%>
+       <tr>
+          <td><%=var.title%></td>
+          <td><%=var.body%></td>
+          <td><%=var.user_id%></td>
+          <td><%=var.id%></td>
+          <td><p><%= var.likes.count %> <%= (var.likes.count) == 1 ? 'Like' : 'Likes'%></p></td>
+          <td><%=link_to'show',post_path(var.id)%></td>
+      </tr>
+    <%end%>
+</table>
+<%=link_to 'New_Post',new_post_path%>

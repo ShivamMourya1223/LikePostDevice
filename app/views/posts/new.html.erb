@@ -1,0 +1,15 @@
+<h1>Posts#new</h1>
+
+<%=form_for @post do |f|%>
+
+<%=f.label'UserId'%>
+<%=f.text_field :user_id%><br>
+
+<%=f.label'Title'%>
+<%=f.text_field :title%><br>
+
+<%=f.label'Body'%>
+<%=f.text_area :body%><br>
+
+<%=f.submit%><br>
+<%end%>

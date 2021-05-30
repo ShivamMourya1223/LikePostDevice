@@ -1,0 +1,31 @@
+<h1>Posts#show</h1>
+
+<table border=1>
+	<tr>
+	  <th>Post_Title</th>
+	  <th>Post_Body</th>
+	   <th>User_Id</th>
+	    <th>Post_Id</th>
+	    <th>Likes</th>
+    </tr>
+   
+       <tr>
+          <td><%=@post.title%></td>
+          <td><%=@post.body%></td>
+           <td><%=@post.user_id%></td>
+            <td><%=@post.id%></td>
+            <td><p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p></td>
+
+      </tr>
+   
+</table>
+<%=link_to 'Back',root_path%><br>
+ 
+
+  <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+   <% if pre_like %>
+         <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+     <% else %>
+         <%= button_to 'Like', post_likes_path(@post), method: :post %>
+   <% end %>
+
